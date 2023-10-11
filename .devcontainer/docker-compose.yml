@@ -1,0 +1,20 @@
+services:
+  retire:
+    build: { context: ., dockerfile: Dockerfile }
+    command: sleep infinity
+    environment:
+      XGEM_HOME: /workspaces/retire/vendor/bundle/ruby
+      ELASTICSEARCH_URL: http://customink-elasticsearch64:9200
+    privileged: true
+    user: vscode
+    depends_on:
+      customink-elasticsearch64: { condition: service_started }
+
+  customink-elasticsearch64:
+    image: "docker.elastic.co/elasticsearch/elasticsearch:6.4.3"
+    restart: unless-stopped
+    environment:
+      - discovery.type=single-node
+
+networks:
+  default: { ipam: { config: [{ subnet: 192.168.176.0/24 }] } }
