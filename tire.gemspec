@@ -52,7 +52,7 @@ Gem::Specification.new do |s|
     s.add_development_dependency "bson_ext"
     s.add_development_dependency "curb"
     s.add_development_dependency "oj"
-    s.add_development_dependency "turn",        "~> 0.9"
+    # s.add_development_dependency "turn",        "~> 0.9"
   end
 
   s.description = <<-DESC

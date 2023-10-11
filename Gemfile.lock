@@ -124,8 +124,6 @@ GEM
     test-unit (3.6.1)
       power_assert
     thread_safe (0.3.6)
-    turn (0.9.6)
-      ansi
     tzinfo (1.2.11)
       thread_safe (~> 0.1)
     unf (0.1.4)
@@ -156,7 +154,6 @@ DEPENDENCIES
   sqlite3
   test-unit
   tire!
-  turn (~> 0.9)
   yajl-ruby (~> 1.0)
 
 BUNDLED WITH

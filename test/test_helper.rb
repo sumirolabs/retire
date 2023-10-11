@@ -1,9 +1,12 @@
 ENV['DEBUG'] = 'true'
 
+puts "*** TestHelper loaded"
+
 require 'rubygems'
 require 'bundler/setup'
 
 require 'pathname'
+require 'byebug'
 require 'test/unit'
 
 JRUBY = defined?(JRUBY_VERSION)
@@ -27,7 +30,7 @@ end
 
 require 'shoulda-context'
 require 'mocha/setup'
-require 'turn/autorun' unless ENV["TM_FILEPATH"] || JRUBY
+# require 'turn/autorun' unless ENV["TM_FILEPATH"] || JRUBY
 
 require 'active_support/core_ext/hash/indifferent_access'
 
@@ -77,7 +80,7 @@ class Test::Unit::TestCase
 end
 
 module Test::Integration
-  URL = "http://localhost:9200"
+  URL = ENV['ELASTICSEARCH_URL']   # "http://localhost:9200"
 
   def setup
     begin; Object.send(:remove_const, :Rails); rescue; end
@@ -89,6 +92,7 @@ module Test::Integration
     end
 
     ::RestClient.delete "#{URL}/articles-test"     rescue nil
+    puts "#{URL}/articles-test"
     ::RestClient.post   "#{URL}/articles-test", ''
     fixtures_path.join('articles').entries.each do |f|
       filename = f.to_s
