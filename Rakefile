@@ -14,9 +14,20 @@ end
 namespace :test do
   Rake::TestTask.new(:unit) do |test|
     test.libs << 'lib' << 'test'
-    test.test_files = FileList["test/unit/*_test.rb"]
+
+    file_strings = []
+
+    # If there is a second argument, then assume it is a test file string, otherwise run all unit tests
+    if ARGV.length > 1
+      file_strings.concat(ARGV.slice(1, ARGV.length))
+    else
+      file_strings << "test/unit/*_test.rb"
+    end
+
+    test.test_files = FileList.new( file_strings.join(', ') )
     test.verbose = true
   end
+
   Rake::TestTask.new(:integration) do |test|
     test.libs << 'lib' << 'test'
     test.test_files = FileList["test/integration/*_test.rb"]
