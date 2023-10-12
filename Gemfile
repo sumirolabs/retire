@@ -11,6 +11,6 @@ platform :jruby do
   gem "json" if defined?(RUBY_VERSION) && RUBY_VERSION < '1.9'
 end
 
-gem 'rest-client'
+gem 'rest-client', '2.0.2'  # Match RFE RestClient version
 gem 'byebug'
 gem 'test-unit'

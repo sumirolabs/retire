@@ -63,10 +63,9 @@ GEM
       ruby2_keywords (>= 0.0.4)
     faraday-net_http (3.0.2)
     hashr (0.0.22)
-    http-accept (1.7.0)
     http-cookie (1.0.5)
       domain_name (~> 0.5)
-    i18n (0.9.5)
+    i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     jsonapi-renderer (0.2.2)
     loofah (2.21.4)
@@ -113,8 +112,7 @@ GEM
       hashr (~> 0.0.19)
       multi_json (~> 1.1)
       redis (> 2)
-    rest-client (2.1.0)
-      http-accept (>= 1.7.0, < 2.0)
+    rest-client (2.0.2)
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
@@ -149,7 +147,7 @@ DEPENDENCIES
   mongoid
   oj
   redis-persistence
-  rest-client
+  rest-client (= 2.0.2)
   shoulda-context
   sqlite3
   test-unit
