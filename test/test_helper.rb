@@ -60,6 +60,38 @@ require File.dirname(__FILE__) + '/models/validated_model'
 
 class Test::Unit::TestCase
 
+  # Many tests are using the syntax "expects(xxx).with { block }" and setting assertions
+  # within the block. The behavior of the assertions has changed over time. Apparently,
+  # when the tests were written the 'assert_xxx' methods would return a truthy value but
+  # in the current version of TestUnit they return `nil`. The methods below restore the
+  # original behavior (otherwise we need to change a LOT of tests...)
+  def assert(*args)
+    super
+    true
+  end
+
+  def assert_equal(*args)
+    super
+    true
+  end
+
+  def assert_match(*args)
+    super
+    true
+  end
+
+  def assert_nil(*args)
+    super
+    true
+  end
+
+  def assert_not_nil(*args)
+    super
+    true
+  end
+  # This is ehere the `assert_xxx` redefinitions end.
+
+
   def assert_block(message=nil)
     raise Test::Unit::AssertionFailedError.new(message.to_s) if (! yield)
     return true
