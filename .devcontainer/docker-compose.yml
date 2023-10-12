@@ -15,6 +15,15 @@ services:
     restart: unless-stopped
     environment:
       - discovery.type=single-node
+      - xpack.security.enabled=false
+    ports:
+      - 9200:9200
+      - 9300:9300
+    volumes:
+      [
+        "/var/lib/docker/codespacemount/data-elasticsearch:/usr/share/elasticsearch/data",
+      ]
+
 
 networks:
   default: { ipam: { config: [{ subnet: 192.168.176.0/24 }] } }

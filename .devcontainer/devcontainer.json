@@ -32,6 +32,7 @@
       }
     },
     "remoteUser": "vscode",
+    "initializeCommand": "./.devcontainer/initialize",
     "postCreateCommand": "./.devcontainer/postCreate",
     "hostRequirements": {
       "cpus": 2
