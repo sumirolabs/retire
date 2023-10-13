@@ -40,6 +40,8 @@ module Tire
     ensure
       curl = %Q|curl -X POST #{url} -d '#{MultiJson.encode(options, :pretty => Configuration.pretty)}'|
       logged('CREATE', curl)
+      puts "********"
+      puts curl
     end
 
     def add_alias(alias_name, configuration={})

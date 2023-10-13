@@ -106,6 +106,9 @@ module Tire
         def create_elasticsearch_index
           unless index.exists?
             new_index = index
+            pp new_index
+            pp new_index.url
+            pp new_index.exists?
             unless result = new_index.create(:mappings => mapping_to_hash, :settings => settings)
               STDERR.puts "[ERROR] There has been an error when creating the index -- elasticsearch returned:",
                           new_index.response
